@@ -12,7 +12,7 @@ variable "project_name" {
 }
 
 variable "cluster_name" {
-  default     = "rmz-test-k8s"
+  default     = "foobar-test-k8s"
   type        = "string"
   description = "cluster name."
 }
