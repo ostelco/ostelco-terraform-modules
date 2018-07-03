@@ -1,45 +1,43 @@
-# Default values for echoserver.
+# Default values for the helm-echoserver Helm Chart.
 # This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+
+# Declare variables with default values to be passed into your templates.
+# To override them, you need to either (a) adjust this file, or (b) provide your own copy of the values file,
+# which overrides the values found here.
 
 replicaCount: 1
+containerName: helm-echoserver
 
 image:
-  repository: nginx
-  tag: stable
-  pullPolicy: IfNotPresent
+  name: "praqma/helm-echoserver"
+  tag: "1.0"
+  imagePullPolicy: "Always"
+
+containerPort: 8080
+
+envVars:
+  CUSTOME_ENV_VAR1: ""
+  CUSTOME_ENV_VAR2: ""
+  # pass more env vars here in the format: key: value
+
+post_install:
+  message: "This line is added from a post-install pod."
+  delay: 30 # seconds to wait before the message is sent
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8888
+  protocol: TCP
 
 ingress:
   enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  path: /
+  annotations:
+    kubernestes.io/ingress.class: nginx
+
   hosts:
-    - chart-example.local
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
-
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #  cpu: 100m
-  #  memory: 128Mi
-  # requests:
-  #  cpu: 100m
-  #  memory: 128Mi
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
+    - example.com
+    - foo.example.com
+  path: \
+  tls:
+    enabled: false
+    secretName: my-ssl-cert-secret # this secret should exist in advance
