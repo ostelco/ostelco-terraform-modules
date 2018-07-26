@@ -18,7 +18,6 @@ variable "cluster_admin_password" {
 
 # Configure the Google Cloud provider
 provider "google" {
-  #  credentials = "${file(var.credentials_path)}"
   project = "${var.project_name}"
   region  = "${var.cluster_region}"
 }
@@ -40,7 +39,6 @@ module "np" {
   cluster_name   = "${module.gke.cluster_name}"
   node_pool_zone = "${module.gke.cluster_zone}"
 
-  #cluster_region = "${module.gke.cluster_region}"
   node_pool_name  = "small-nodes-pool"
   node_pool_count = "2"
   node_tags       = ["dev"]
