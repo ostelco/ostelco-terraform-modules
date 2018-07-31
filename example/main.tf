@@ -23,6 +23,7 @@ provider "google" {
 }
 
 module "gke" {
+  #   source = "../terraform-google-gke-cluster"
   source              = "github.com/ostelco/ostelco-terraform-modules//terraform-google-gke-cluster"
   cluster_password    = "${var.cluster_admin_password}"
   cluster_name        = "dev-cluster"
@@ -35,13 +36,14 @@ module "gke" {
 }
 
 module "np" {
+  #   source = "../terraform-google-gke-node-pool"
   source         = "github.com/ostelco/ostelco-terraform-modules//terraform-google-gke-node-pool"
   cluster_name   = "${module.gke.cluster_name}"
   node_pool_zone = "${module.gke.cluster_zone}"
 
-  node_pool_name  = "small-nodes-pool"
-  node_pool_count = "2"
-  node_tags       = ["dev"]
+  node_pool_name         = "small-nodes-pool"
+  initial_node_pool_size = "2"
+  node_tags              = ["dev"]
 
   node_labels = {
     "env"         = "dev"
