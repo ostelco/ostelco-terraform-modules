@@ -20,7 +20,7 @@ variable "node_pool_name" {
   description = "The node pool name."
 }
 
-variable "node_pool_count" {
+variable "initial_node_pool_size" {
   default     = 2
   description = "The initial size of the cluster node pool."
 }

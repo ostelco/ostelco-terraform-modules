@@ -1,8 +1,8 @@
 resource "google_container_node_pool" "np" {
   name = "${var.node_pool_name}"
 
-  node_count = "${var.node_pool_count}"
-  zone       = "${var.node_pool_zone}"
+  initial_node_count = "${var.initial_node_pool_size}"
+  zone               = "${var.node_pool_zone}"
 
   cluster = "${var.cluster_name}"
 
