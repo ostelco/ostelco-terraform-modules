@@ -43,6 +43,7 @@ module "np" {
 
   node_pool_name         = "small-nodes-pool"
   initial_node_pool_size = "2"
+  node_count             = "2"
   node_tags              = ["dev"]
 
   node_labels = {
