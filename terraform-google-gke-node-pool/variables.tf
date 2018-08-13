@@ -25,6 +25,11 @@ variable "initial_node_pool_size" {
   description = "The initial size of the cluster node pool."
 }
 
+variable "node_count" {
+  default     = 2
+  description = "The number of nodes in the cluster node pool."
+}
+
 variable "pool_min_node_count" {
   default     = 1
   description = "The minimum number of nodes in the node pool."
