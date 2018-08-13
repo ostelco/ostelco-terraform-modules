@@ -12,7 +12,7 @@ Used to create a Kubernetes node pool in Google Kubernetes Engine (GKE).
 | auto_repair            | whether to enable auto repair on the pool nodes or not.                                                                                           | true          |
 | auto_upgrade           | whether to enable automatic kubernetes version upgrades on nodes or not.                                                                          | false         |
 | node_pool_name         | the node pool name.                                                                                                                               |               |
-| initial_node_pool_size | the initial size of the cluster node pool.                                                                                                        | 2             |
+| node_count             | the number of nodes in the cluster node pool.                                                                                                        | 2             |
 | pool_min_node_count    | the minimum number of nodes in the node pool.                                                                                                     | 1             |
 | pool_max_node_count    | the maximum number of nodes in the node pool.                                                                                                     | 3             |
 | pool_node_disk_size_gb | the disk size (in GB) for nodes in the cluster node pool.                                                                                         | 100           |
