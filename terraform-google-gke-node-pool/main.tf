@@ -18,14 +18,7 @@ resource "google_container_node_pool" "np" {
   }
 
   node_config {
-    oauth_scopes = [
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/devstorage.read_only",
-      "https://www.googleapis.com/auth/logging.write",
-      "https://www.googleapis.com/auth/monitoring",
-      "https://www.googleapis.com/auth/service.management",
-    ]
-
+    oauth_scopes = "${var.oauth_scopes}"
     disk_size_gb = "${var.pool_node_disk_size_gb}"
     machine_type = "${var.pool_node_machine_type}"
 

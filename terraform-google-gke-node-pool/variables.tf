@@ -50,6 +50,19 @@ variable "pool_node_machine_type" {
   description = "The machine type for nodes in the node pool."
 }
 
+variable "oauth_scopes" {
+  type = "list"
+  description = "list of Google API scopes that are available for nodes in a pool."
+  default = [
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/devstorage.read_only",
+      "https://www.googleapis.com/auth/logging.write",
+      "https://www.googleapis.com/auth/monitoring",
+      "https://www.googleapis.com/auth/service.management",
+    ]
+}
+
+
 variable "node_tags" {
   type        = "list"
   description = "list of tags to be applied all nodes in the pool."
