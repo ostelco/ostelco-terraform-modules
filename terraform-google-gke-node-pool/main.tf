@@ -1,7 +1,9 @@
 resource "google_container_node_pool" "np" {
   name = "${var.node_pool_name}"
 
-  #initial_node_count = "${var.initial_node_pool_size}" # can't be used together with node_count
+  # the line below can't be used together with node_count
+  #initial_node_count = "${var.initial_node_pool_size}" 
+  # these should not be used with Auto scaling
   # node_count = "${var.node_count}"
   zone       = "${var.node_pool_zone}"
 
