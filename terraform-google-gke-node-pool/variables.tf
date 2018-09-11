@@ -20,6 +20,11 @@ variable "node_pool_name" {
   description = "The node pool name."
 }
 
+variable "initial_node_pool_size" {
+  description = "initial node pool size"
+  default = 2
+}
+
 variable "pool_min_node_count" {
   default     = 1
   description = "The minimum number of nodes in the node pool."
