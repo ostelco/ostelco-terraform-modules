@@ -1,9 +1,23 @@
+variable "project_id" {
+  description = "Google cloud project ID"
+}
+
+variable "regional" {
+  description = "whether the cluster should be created in multiple zones or not."
+  default = false
+}
+
+variable "cluster_region" {
+  description = "The region in which the cluster resides (required for regional clusters). This property is in beta, and should be used with the terraform-provider-google-beta provider."  
+}
+
 variable "cluster_name" {
   description = "cluster name to which this node pool will be associated."
 }
 
 variable "node_pool_zone" {
   description = "The zone where the node pool is located."
+  default = ""
 }
 
 variable "auto_repair" {
@@ -40,6 +54,12 @@ variable "pool_node_disk_size_gb" {
   description = "The disk size for nodes in the cluster node pool."
 }
 
+variable "pool_node_disk_type" {
+  description = "Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd')."
+  default = "pd-standard"
+}
+
+
 variable "pool_node_machine_type" {
   default     = "n1-standard-1"
   description = "The machine type for nodes in the node pool."
@@ -71,4 +91,9 @@ variable "node_taints" {
 variable "node_labels" {
   type        = "map"
   description = "map of key/value labels to be applied to all nodes in this pool."
+}
+
+variable "node_metadata" {
+  description = "How to expose the node metadata to the workload running on the node."
+  default = "SECURE"  
 }

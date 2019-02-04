@@ -1,10 +1,18 @@
+variable "project_id" {
+  description = "Google cloud project ID"
+}
+variable "regional" {
+  description = "whether the cluster should be created in multiple zones or not."
+  default = false
+}
+
 variable "cluster_username" {
   description = "cluster username."
   default     = "admin"
 }
 
 variable "cluster_password" {
-  description = "password for the cluster username. Must be 16 characters at least."
+  description = "password for the cluster username. Must be 16 characters long at least."
 }
 
 variable "issue_client_certificate" {
@@ -16,9 +24,10 @@ variable "cluster_name" {
   description = "cluster name."
 }
 
-variable "cluster_zone" {
-  default     = "europe-west1-c"
-  description = "The zone where the cluster will be created."
+variable "cluster_zones" {
+  type = "list"
+  default     = [""]
+  description = "The zone where the cluster will be created. Required for zonal clusters only."
 }
 
 variable "cluster_region" {
@@ -26,15 +35,9 @@ variable "cluster_region" {
   description = "The region where the cluster will be created."
 }
 
-variable "cluster_additional_zones" {
-  type        = "list"
-  description = "Additional zones to create the cluster in. This makes the cluster multizoned and improves availability."
-  default     = []
-}
-
 variable "cluster_network" {
   default     = "default"
-  description = "The network where the cluster will be created."
+  description = "The network (VPC) where the cluster will be created."
 }
 
 variable "cluster_subnetwork" {
@@ -47,8 +50,8 @@ variable "cluster_description" {
 }
 
 variable "cluster_version" {
-  description = "The k8s version of the cluster master and nodes."
-  default     = "1.9.7-gke.3"
+  description = "The k8s version of the cluster master and nodes. You can use 'latest' to have the latest availble version in the specified region. "
+  default     = "latest"
 }
 
 variable "pod_security_policy" {
