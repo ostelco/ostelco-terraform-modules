@@ -1,4 +1,5 @@
 resource "google_container_cluster" "zonal_primary" {
+  provider = "google-beta"
   count       = "${var.regional ? 0 : 1}"
   name = "${var.cluster_name}"
   zone = "${var.cluster_zones[0]}"

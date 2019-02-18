@@ -1,5 +1,7 @@
 # Google GKE node pool Terraform module
 
+> Since this module uses `beta` features in Google Cloud, it needs to use the `google-beta` terraform provider. More details [here](https://www.terraform.io/docs/providers/google/provider_versions.html).
+
 Used to create a Kubernetes node pool in Google Kubernetes Engine (GKE).
 
 This module can create zonal or regional node pools. See usage examples in the [examples folder](../example)

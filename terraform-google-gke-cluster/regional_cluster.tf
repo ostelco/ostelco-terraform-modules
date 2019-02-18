@@ -1,4 +1,5 @@
 resource "google_container_cluster" "regional_primary" {
+  provider = "google-beta"
   count       = "${var.regional ? 1 : 0}"  
   name = "${var.cluster_name}"
   project = "${var.project_id}"

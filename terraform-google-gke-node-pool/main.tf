@@ -8,6 +8,7 @@ data "google_compute_zones" "available" {
 
 
 resource "google_container_node_pool" "zonal_np" {
+  provider = "google-beta"
   count       = "${var.regional ? 0 : 1}"
   name = "${var.node_pool_name}"
   project = "${var.project_id}"
@@ -62,6 +63,7 @@ resource "google_container_node_pool" "zonal_np" {
 }
 
 resource "google_container_node_pool" "regional_np" {
+  provider = "google-beta"
   count       = "${var.regional ? 1 : 0}"
   name = "${var.node_pool_name}"
   project = "${var.project_id}"
