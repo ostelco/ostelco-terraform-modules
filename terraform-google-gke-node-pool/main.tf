@@ -6,11 +6,17 @@ data "google_compute_zones" "available" {
   region  = "${var.cluster_region}"
 }
 
+resource "random_id" "np_name" {
+  keepers = {
+    name = "${var.node_pool_name}"
+  }
+  byte_length = 5
+}
 
 resource "google_container_node_pool" "zonal_np" {
   provider = "google-beta"
   count       = "${var.regional ? 0 : 1}"
-  name = "${var.node_pool_name}"
+  name = "${var.node_pool_name}_${random_id.np_name.b64_url}"
   project = "${var.project_id}"
 
   # the line below can't be used together with node_count
@@ -65,7 +71,7 @@ resource "google_container_node_pool" "zonal_np" {
 resource "google_container_node_pool" "regional_np" {
   provider = "google-beta"
   count       = "${var.regional ? 1 : 0}"
-  name = "${var.node_pool_name}"
+  name = "${var.node_pool_name}_${random_id.np_name.b64_url}"
   project = "${var.project_id}"
 
   # the line below can't be used together with node_count
