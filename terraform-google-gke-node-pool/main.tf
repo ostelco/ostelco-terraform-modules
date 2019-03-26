@@ -16,7 +16,7 @@ resource "random_id" "np_name" {
 resource "google_container_node_pool" "zonal_np" {
   provider = "google-beta"
   count       = "${var.regional ? 0 : 1}"
-  name = "${var.node_pool_name}_${random_id.np_name.b64_url}"
+  name = "${var.node_pool_name}-${random_id.np_name.b64_url}"
   project = "${var.project_id}"
 
   # the line below can't be used together with node_count
@@ -71,7 +71,7 @@ resource "google_container_node_pool" "zonal_np" {
 resource "google_container_node_pool" "regional_np" {
   provider = "google-beta"
   count       = "${var.regional ? 1 : 0}"
-  name = "${var.node_pool_name}_${random_id.np_name.b64_url}"
+  name = "${var.node_pool_name}-${random_id.np_name.b64_url}"
   project = "${var.project_id}"
 
   # the line below can't be used together with node_count
