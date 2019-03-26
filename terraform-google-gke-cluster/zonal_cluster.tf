@@ -13,7 +13,6 @@ resource "google_container_cluster" "zonal_primary" {
   remove_default_node_pool = "${var.remove_default_node_pool}"
   initial_node_count       = 1
   additional_zones         = ["${slice(var.cluster_zones,1,length(var.cluster_zones))}"]
-  node_version             = "${local.kubernetes_version}"
 
   master_auth {
     username = "${var.cluster_username}"

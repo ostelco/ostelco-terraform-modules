@@ -13,7 +13,6 @@ resource "google_container_cluster" "regional_primary" {
   initial_node_count       = 1
   region                   = "${var.cluster_region}" 
   additional_zones         = ["${sort(random_shuffle.available_zones.result)}"]
-  node_version             = "${local.kubernetes_version}"
 
   master_auth {
     username = "${var.cluster_username}"
