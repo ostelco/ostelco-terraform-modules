@@ -29,6 +29,9 @@ This module can create zonal or regional clusters. See usage examples in the [ex
 | disable_network_policy_config      | whether network policy addon in the cluster is to be disabled or not.                                                  | false          |
 | disable_horizontal_pod_autoscaling | whether horizontal pod autoscaling (and heapster metrics) is to be disabled or not.                                    | false          |
 | remove_default_node_pool           | whether to delete the default node pool (contains 1 node) or not.                                                      | true           |
+| logging_service | The version of logging service to use. `logging.googleapis.com/kubernetes` or `logging.googleapis.com` | `logging.googleapis.com/kubernetes` |
+| monitoring_service | The version of monitoring service to use. `monitoring.googleapis.com/kubernetes` or `monitoring.googleapis.com` | `monitoring.googleapis.com/kubernetes` |
+| vertical_pod_autoscaling_enabled | Whether vertical pod autoscaling is enabled or not.| false |
 
 
 ## Output variables

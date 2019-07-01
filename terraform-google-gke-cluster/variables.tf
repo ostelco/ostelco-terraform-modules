@@ -88,3 +88,20 @@ variable "remove_default_node_pool" {
   description = "Whether to delete the default node pool (contains 1 node) or not."
   default     = "true"
 }
+
+variable "logging_service" {
+  description = "The version of logging service to use. logging.googleapis.com/kubernetes or logging.googleapis.com"
+  default = "logging.googleapis.com/kubernetes"
+}
+
+variable "monitoring_service" {
+  description = "The version of monitoring service to use. monitoring.googleapis.com/kubernetes or monitoring.googleapis.com"
+  default = "monitoring.googleapis.com/kubernetes"
+}
+
+variable "vertical_pod_autoscaling_enabled" {
+  description = "Whether vertical pod autoscaling is enabled or not."
+  default = false
+}
+
+

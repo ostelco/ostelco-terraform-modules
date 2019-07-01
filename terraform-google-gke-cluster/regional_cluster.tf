@@ -23,6 +23,13 @@ resource "google_container_cluster" "regional_primary" {
     }
   }
 
+  logging_service = "${var.logging_service}"
+  monitoring_service = "${var.monitoring_service}"
+
+  vertical_pod_autoscaling {
+    enabled = "${var.vertical_pod_autoscaling_enabled}"
+  }
+
   # The time is specified in 24H format and the time zone is GMT
   # The maintenance window is 4 hours from that time
   maintenance_policy {
